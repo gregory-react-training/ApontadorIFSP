@@ -30,7 +30,7 @@ export default function Page2() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#7CFC00',
+    backgroundColor: 'white',
   },
   item: {
     backgroundColor: '#CCC',

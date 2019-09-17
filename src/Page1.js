@@ -1,14 +1,22 @@
 import React from 'react';
 import { View, Image, Button, Text, TextInput, StyleSheet } from 'react-native';
+import RNPicker from 'react-native-picker-select';
 
 const Page1 = ({ navigation }) => (
   <View style={styles.view}>
     <Text style={styles.title}>IFCIÊNCIA {new Date().getFullYear()}</Text>
 	  <View>
-        <Image style={styles.image} source={require('./images/logo.jpg')} /> 
+      <Image style={styles.image} source={require('./images/logo.jpg')} /> 
     </View>
-    <TextInput style={styles.textinput} placeholder="Digite seu Email" />
-    <Button title="Logar" onPress={() => navigation.navigate('Eventos')} />
+    <View>
+      <TextInput style={styles.textinput} placeholder="Digite seu Email" />
+      <RNPicker style={styles.picker} label='Eventos' onValueChange={(value) => console.log(value)} 
+      items={[
+        { label: 'IFCiência', value: 'IFCiência' },
+        { label: 'Flisol', value: 'Flisol' },
+      ]}/>
+      <Button title="Logar" onPress={() => navigation.navigate('Eventos')} />
+    </View>
   </View>
 );
 
@@ -20,7 +28,8 @@ const styles = StyleSheet.create({
     view:{
       flex: 1, 
       alignItems: 'center', 
-      backgroundColor: '#7CFC00',
+      backgroundColor: 'white',
+      height: 500
     },
     image:{
       height: 200,
@@ -41,7 +50,11 @@ const styles = StyleSheet.create({
       paddingBottom: 10,
       fontSize: 20,
       fontWeight: 'bold',
-    }
+    },
+    picker: {
+      paddingBottom: 10,
+    },
+
 }
 );
 
