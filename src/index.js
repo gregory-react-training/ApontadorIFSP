@@ -1,13 +1,18 @@
-import Page1 from './Page1';
-import Page2 from './Page2';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 
-import { createAppContainer, createStackNavigator } from 'react-navigation';
+import ScreenHome from './screens/home';
+import ScreenAtividades from './screens/atividades';
+import ScreenQRCode from './screens/qrcode';
 
-const Routes = createAppContainer(
-  createStackNavigator({
-    Login: Page1,
-    Eventos: Page2,
-  })
-);
+const Routes =  createStackNavigator(
+    {
+        Home: ScreenHome,
+        Atividades: ScreenAtividades,
+        QRCode: ScreenQRCode,
+    },
+    {
+        initialRouteName: 'Home',
+    });
 
-export default Routes;
+export default createAppContainer(Routes);
