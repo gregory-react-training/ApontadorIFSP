@@ -1,35 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Button } from 'react-native';
-import QRCodeScanner from 'react-native-qrcode-scanner';
+import colors from './styles/colors'
+import api from '../services/api';
 
-const DATA = [
-  { id: '1',
-  title: 'Atividade 1', },
-  { id: '2',
-  title: 'Atividade 2', },
-  { id: '3',
-  title: 'Atividade 3', }
-]
+class Atividades extends Component {
 
-onSuccess = (e) => {
-  alert(e.data);
-};
+  state = {
+    atividades: [],
+  };
 
-QRCode = () => (
-  <QRCodeScanner 
-    onRead={(e) => this.onSuccess(e)} />
-);
+  static navigationOptions = {
+    title: "Lista de Atividades",
+    headerStyle: {
+        backgroundColor: colors.primary,
+      },
+      headerTintColor: colors.titleFontColor,
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
+  }
 
-const Atividades = ({ navigation }) => (
-  <SafeAreaView style={styles.container}>
-    <FlatList data={DATA} renderItem={({ item }) => (  
-      <View style={styles.item}>
-        <Button onPress={() => navigation.navigate('QRCode')} title={item.title}/>
-      </View>
-      )}
-      keyExtractor={item => item.id} />
-  </SafeAreaView>
-);
+  render(){
+    this.state.atividades = api.data;
+    const { navigation } = this.props;
+    return(
+      <SafeAreaView style={styles.container}>
+        <FlatList data={this.state.atividades} renderItem={({ item }) => (  
+          <View style={styles.item}>
+            <Button onPress={() => navigation.navigate('QRCode')} title={item.title}/>
+          </View>
+          )}
+          keyExtractor={item => item.id} />
+      </SafeAreaView>
+    );
+  }}
 
 const styles = StyleSheet.create({
   container: {
@@ -46,9 +51,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
-
-Atividades.navigationOptions = {
-  title: "Atividades"
-};
 
 export default Atividades;

@@ -5,14 +5,14 @@ import ScreenHome from './screens/home';
 import ScreenAtividades from './screens/atividades';
 import ScreenQRCode from './screens/qrcode';
 
-const Routes =  createStackNavigator(
+const stackNavigator =  createStackNavigator(
     {
         Home: ScreenHome,
         Atividades: ScreenAtividades,
-        QRCode: ScreenQRCode,
+        QRCode:ScreenQRCode,
     },
     {
         initialRouteName: 'Home',
     });
 
-export default createAppContainer(Routes);
+export default createAppContainer(stackNavigator);

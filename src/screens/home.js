@@ -1,66 +1,98 @@
-import React from 'react';
-import { View, Image, Button, Text, TextInput, StyleSheet } from 'react-native';
-import RNPicker from 'react-native-picker-select';
+import React, { Component } from 'react';
+import { Button, Image, Picker, StyleSheet, TextInput, View } from 'react-native';
+import colors from './styles/colors';
+import api from '../services/api';
 
-const Home = ({ navigation }) => (
-  <View style={styles.view}>
-    <View>
-      <Text style={styles.title}> IFCIÊNCIA {new Date().getFullYear()}</Text>
-      <Image style={styles.image} source={require('./images/logo/logo.jpg')} /> 
-    </View>
-    <View style={styles.body}>
-      <TextInput style={styles.textinput} placeholder="Digite seu Email" keyboardType="email-address"/>
-      <RNPicker onValueChange={(value) => alert(value)} 
-        items={[
-          { label: 'IFCiência', value: 'IFCiência' },
-          { label: 'Flisol', value: 'Flisol' },
-		  { label: 'Feira de Sustentabilidade', value: 'Feira de Sustentabilidade' },
-        ]}/>
-    </View>
-    <View style={styles.body}>
-      <Button title="Logar" onPress={() => navigation.navigate('Atividades')} />
-    </View>
-  </View>
-);
+class Home extends Component {
 
-Home.navigationOptions = {
-  title: 'Apontador de Presença',
+  state = {
+    email: '',
+    evento: '',
+  };
+
+  static navigationOptions = {
+      title: "Apontador de Presença",
+      headerStyle: {
+          backgroundColor: colors.primary,
+        },
+        headerTintColor: colors.titleFontColor,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          textAlign: 'center',
+        },
+  }
+
+  logar() {
+    api.listagem(this.state.email);
+  }
+
+  render(){
+      const { navigation } = this.props;
+      return(
+        <View style={styles.viewContainer}>
+          <View style={styles.container}>
+            <Image style={styles.image} source={require('./images/logo/logo.jpg')} /> 
+          </View>
+          <View style={styles.body}>
+            <TextInput style={styles.textinput} placeholder="Email" keyboardType="email-address"
+            onValueChange={(itemValue) => this.setState({email: itemValue})} />
+            <Picker style={styles.picker} selectedValue={this.state.evento} 
+            onValueChange={(itemValue) => this.setState({evento: itemValue})} >
+              <Picker.Item label='IFCiência' value='ifciencia2018' />
+            </Picker>
+            <Button title="Logar" onPress={() => navigation.navigate('Atividades')} />
+          </View>
+        </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    view:{
-      flex: 1, 
-      alignItems: 'center', 
-      backgroundColor: 'white',
-      height: 750,
+    viewContainer: {
+      backgroundColor: colors.background,
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
-    body:{
-      flex: 1, 
-      alignItems: 'center', 
-      backgroundColor: 'white',
+    container:{
+      backgroundColor: colors.background,
+      borderWidth: 1,
+      borderColor: colors.borderSecondaryColor,
+      borderRadius: 5,
+      padding: 10,
     },
-    image:{
+    image: {
       height: 200,
       width: 200,
-      marginBottom: 10,
     },
-    textinput:{
-      height: 40, 
-      width: 300,
+    body: {
+      flex: 1, 
+      alignItems: 'center',
+    },
+    picker: {
+      height: 20,
+      width: 250,
+      transform: [{scaleX: 1.25}, {scaleY: 1.25}],
+      marginTop: 25,
+      marginBottom: 50,
+    },
+    textinput: {
+      height: 50, 
+      width: 325,
       borderColor: 'black', 
       borderWidth: 1,
-      backgroundColor: 'white',
-      color: 'black',
       marginTop: 15,
       marginBottom: 15,
       fontSize: 15,
     },
-    title: {
-      marginTop: 15,
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-}
+  }
 );
 
 export default Home;
+
+{/*const mapStateToProps = (state) => {
+  const {} = state
+  return {}
+};
+
+export default connect(mapStateToProps)(ScreenHome); */}

@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import QRCodeScanner from 'react-native-qrcode-scanner';
+import colors from './styles/colors'
 
-onSuccess = (e) => {
-  alert(e.data);
-};
+class QRCode extends Component {
 
-const QRCode = () => (
-  <QRCodeScanner 
-    onRead={(e) => this.onSuccess(e)} />
-);
+  onSuccess = (e) => {
+    alert(e.data);
+  };
 
-QRCode.navigationOptions = {
-  title: "QRCode"
-};
+  static navigationOptions = {
+    title: "QRCode",
+    headerStyle: {
+        backgroundColor: colors.primary,
+      },
+      headerTintColor: colors.titleFontColor,
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
+}
+
+render(){
+  return(
+      <QRCodeScanner onRead={(e) => this.onSuccess(e)} />
+  );
+  }
+}
 
 export default QRCode;
