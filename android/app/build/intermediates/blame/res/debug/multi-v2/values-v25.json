@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Felip\\OneDrive\\Documentos\\React Native\\ApontadorIF\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
+            "outputFile": "C:\\Users\\Felip\\OneDrive\\Documentos\\React Native\\ApontadorIFSP\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\42bc20e91edad2e0c6c3df19f5adc07d\\res\\values-v25\\values-v25.xml",

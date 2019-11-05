@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Felip\\OneDrive\\Documentos\\React Native\\ApontadorIF\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-in\\values-in.xml",
+            "outputFile": "C:\\Users\\Felip\\OneDrive\\Documentos\\React Native\\ApontadorIFSP\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-in\\values-in.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\10c02f58b5d3aec494153fd8b2bde1bf\\res\\values-in\\values-in.xml",
@@ -18,23 +18,6 @@
                         "startOffsets": "5577",
                         "endColumns": "100",
                         "endOffsets": "5673"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\e6fe8410b3b188de7d40bdcc34cf4c29\\res\\values-in\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "245,350,546,670,774,988,1113,1254,1385,1610,1713,1908,2032,2246,2416,2506,2592",
-                        "endColumns": "104,195,123,103,213,124,140,130,224,102,194,123,213,169,89,85,103",
-                        "endOffsets": "349,545,669,773,987,1112,1253,1384,1609,1712,1907,2031,2245,2415,2505,2591,2695"
-                    },
-                    "to": {
-                        "startLines": "29,30,31,32,33,34,35,36,38,39,40,41,42,43,44,45,46",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "2803,2912,3108,3236,3344,3558,3687,3832,4158,4383,4490,4685,4813,5027,5201,5295,5385",
-                        "endColumns": "108,195,127,107,213,128,144,134,224,106,194,127,213,173,93,89,107",
-                        "endOffsets": "2907,3103,3231,3339,3553,3682,3827,3962,4378,4485,4680,4808,5022,5196,5290,5380,5488"
                     }
                 },
                 {
@@ -55,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\cfcea8751aa89661014887e8a8dd68ab\\res\\values-in\\values.xml",
+                    "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\ad3811fa37fbeccb42a13ee920fe8f99\\res\\values-in\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -69,6 +52,23 @@
                         "startOffsets": "3967",
                         "endColumns": "190",
                         "endOffsets": "4153"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\ba8a1b04e64395bc8f2cb15a1042921f\\res\\values-in\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "245,350,546,670,774,988,1113,1254,1385,1610,1713,1908,2032,2246,2416,2506,2592",
+                        "endColumns": "104,195,123,103,213,124,140,130,224,102,194,123,213,169,89,85,103",
+                        "endOffsets": "349,545,669,773,987,1112,1253,1384,1609,1712,1907,2031,2245,2415,2505,2591,2695"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,32,33,34,35,36,38,39,40,41,42,43,44,45,46",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "2803,2912,3108,3236,3344,3558,3687,3832,4158,4383,4490,4685,4813,5027,5201,5295,5385",
+                        "endColumns": "108,195,127,107,213,128,144,134,224,106,194,127,213,173,93,89,107",
+                        "endOffsets": "2907,3103,3231,3339,3553,3682,3827,3962,4378,4485,4680,4808,5022,5196,5290,5380,5488"
                     }
                 }
             ]

@@ -1,46 +1,81 @@
 import React, { Component } from 'react';
-import { Button, Image, Picker, StyleSheet, TextInput, View } from 'react-native';
+import { Button, Image, Picker, StyleSheet, TextInput, View, Text } from 'react-native';
 import colors from './styles/colors';
 import api from '../services/api';
 
-class Home extends Component {
+export default class Home extends Component {
 
-  state = {
-    email: '',
-    evento: '',
-  };
+  static navigation = this.props;
 
   static navigationOptions = {
-      title: "Apontador de Presença",
-      headerStyle: {
-          backgroundColor: colors.primary,
-        },
-        headerTintColor: colors.titleFontColor,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-          textAlign: 'center',
-        },
+    title: "Apontador de Presença",
+    headerStyle: {
+        backgroundColor: colors.primary,
+      },
+    headerTintColor: colors.titleFontColor,
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      textAlign: 'center',
+    },
   }
 
-  logar() {
-    api.listagem(this.state.email);
-  }
+  state = {
+    email: 'felipe.florentino01@gmail.com',
+    erro: '',
+  };
+
+  handleEmailChange = (email) => {
+    this.setState({ email });
+  };
+
+  handleSignInPress = async () => {
+    if (this.state.email.length === 0) 
+    {
+      this.setState({ erro: 'Preencha o email para continuar!' }, () => false);
+    } 
+    else 
+    {
+      try 
+      {
+        const response = await JSON.stringify(api.post('/ifciencia2018/per/webservice/per_valida_email.php'), {
+          email: this.state.email,
+        });
+        this.navigation.navigate('Atividades');
+      } 
+      catch (err) 
+      {
+        this.setState({ erro: 'Houve um problema com o login, verifique suas credenciais!' });
+      }
+    }
+  };
 
   render(){
-      const { navigation } = this.props;
       return(
         <View style={styles.viewContainer}>
           <View style={styles.container}>
             <Image style={styles.image} source={require('./images/logo/logo.jpg')} /> 
           </View>
           <View style={styles.body}>
-            <TextInput style={styles.textinput} placeholder="Email" keyboardType="email-address"
-            onValueChange={(itemValue) => this.setState({email: itemValue})} />
+            <TextInput 
+                style={styles.textinput} 
+                placeholder="Email" 
+                value={this.state.email}
+                keyboardType="email-address"
+                onChangeText={this.handleEmailChange}
+                autoCorrect={false}
+                autoCapitalize="none"
+            />
+            
             <Picker style={styles.picker} selectedValue={this.state.evento} 
             onValueChange={(itemValue) => this.setState({evento: itemValue})} >
               <Picker.Item label='IFCiência' value='ifciencia2018' />
             </Picker>
-            <Button title="Logar" onPress={() => navigation.navigate('Atividades')} />
+
+            <Text style={styles.errorMessage}> {this.state.erro} </Text>
+
+            <Button 
+                title="Logar" 
+                onPress={this.handleSignInPress}> </Button>
           </View>
         </View>
     );
@@ -85,14 +120,9 @@ const styles = StyleSheet.create({
       marginBottom: 15,
       fontSize: 15,
     },
+    errorMessage: {
+      marginLeft: 10,
+      fontSize: 15,
+    }
   }
 );
-
-export default Home;
-
-{/*const mapStateToProps = (state) => {
-  const {} = state
-  return {}
-};
-
-export default connect(mapStateToProps)(ScreenHome); */}

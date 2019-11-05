@@ -7,6 +7,7 @@ class Atividades extends Component {
 
   state = {
     atividades: [],
+    email: 'felipe.florentino01@gmail.com'
   };
 
   static navigationOptions = {
@@ -21,12 +22,19 @@ class Atividades extends Component {
       },
   }
 
-  render(){
-    this.state.atividades = api.data;
+  componentDidMount() {
+      api.post('/per_presenca.php', {  
+      email: this.state.email,
+    });
+
+    this.setState({atividades: api.data});
+  }
+
+  render() {
     const { navigation } = this.props;
     return(
       <SafeAreaView style={styles.container}>
-        <FlatList data={this.state.atividades} renderItem={({ item }) => (  
+        <FlatList data={this.state.data} renderItem={({ item }) => (  
           <View style={styles.item}>
             <Button onPress={() => navigation.navigate('QRCode')} title={item.title}/>
           </View>

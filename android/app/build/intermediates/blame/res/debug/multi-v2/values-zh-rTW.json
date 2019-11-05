@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Felip\\OneDrive\\Documentos\\React Native\\ApontadorIF\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rTW\\values-zh-rTW.xml",
+            "outputFile": "C:\\Users\\Felip\\OneDrive\\Documentos\\React Native\\ApontadorIFSP\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rTW\\values-zh-rTW.xml",
             "map": [
-                {
-                    "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\cfcea8751aa89661014887e8a8dd68ab\\res\\values-zh-rTW\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "251",
-                        "endColumns": "161",
-                        "endOffsets": "412"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "3697",
-                        "endColumns": "161",
-                        "endOffsets": "3854"
-                    }
-                },
                 {
                     "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\10c02f58b5d3aec494153fd8b2bde1bf\\res\\values-zh-rTW\\values-zh-rTW.xml",
                     "from": {
@@ -35,6 +18,23 @@
                         "startOffsets": "5061",
                         "endColumns": "100",
                         "endOffsets": "5157"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\ad3811fa37fbeccb42a13ee920fe8f99\\res\\values-zh-rTW\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "251",
+                        "endColumns": "161",
+                        "endOffsets": "412"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "3697",
+                        "endColumns": "161",
+                        "endOffsets": "3854"
                     }
                 },
                 {
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\e6fe8410b3b188de7d40bdcc34cf4c29\\res\\values-zh-rTW\\values.xml",
+                    "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\ba8a1b04e64395bc8f2cb15a1042921f\\res\\values-zh-rTW\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
