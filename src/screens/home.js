@@ -4,9 +4,6 @@ import colors from './styles/colors';
 import api from '../services/api';
 
 export default class Home extends Component {
-
-  static navigation = this.props;
-
   static navigationOptions = {
     title: "Apontador de Presença",
     headerStyle: {
@@ -20,7 +17,7 @@ export default class Home extends Component {
   }
 
   state = {
-    email: 'felipe.florentino01@gmail.com',
+    email: 'allytori01@gmail.com',
     erro: '',
   };
 
@@ -29,27 +26,33 @@ export default class Home extends Component {
   };
 
   handleSignInPress = async () => {
-    if (this.state.email.length === 0) 
-    {
+    const { navigation } = this.props;
+    if (this.state.email.length === 0) {
       this.setState({ erro: 'Preencha o email para continuar!' }, () => false);
     } 
-    else 
-    {
-      try 
-      {
-        const response = await JSON.stringify(api.post('/ifciencia2018/per/webservice/per_valida_email.php'), {
+    else {
+      try {
+        const response = await api.post('/per_valida_email.php', {
           email: this.state.email,
         });
-        this.navigation.navigate('Atividades');
+        console.log(response)
+        console.log(response.data)
+          if (response.data != "Usuário Inválido.") {
+            navigation.navigate('Atividades')
+          }
+          else {
+            this.setState({ erro: 'Usuário Inválido.' });
+          }
       } 
-      catch (err) 
-      {
+      catch (err) {
+        console.log(err);
         this.setState({ erro: 'Houve um problema com o login, verifique suas credenciais!' });
       }
     }
   };
 
   render(){
+    const { navigation } = this.props;
       return(
         <View style={styles.viewContainer}>
           <View style={styles.container}>
@@ -62,20 +65,17 @@ export default class Home extends Component {
                 value={this.state.email}
                 keyboardType="email-address"
                 onChangeText={this.handleEmailChange}
-                autoCorrect={false}
                 autoCapitalize="none"
             />
             
             <Picker style={styles.picker} selectedValue={this.state.evento} 
             onValueChange={(itemValue) => this.setState({evento: itemValue})} >
-              <Picker.Item label='IFCiência' value='ifciencia2018' />
+              <Picker.Item label='IFCiência' value='ifciencia2019' />
             </Picker>
 
             <Text style={styles.errorMessage}> {this.state.erro} </Text>
 
-            <Button 
-                title="Logar" 
-                onPress={this.handleSignInPress}> </Button>
+            <Button title="Logar" onPress={this.handleSignInPress} > </Button>
           </View>
         </View>
     );

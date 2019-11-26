@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Button } from 'react-native';
 import colors from './styles/colors'
-import api from '../services/api';
 
 class Atividades extends Component {
 
   state = {
-    atividades: [],
-    email: 'felipe.florentino01@gmail.com'
+    atividades: [
+      {key: "0", desc: "Atividade 1"},
+      {key: "1", desc: "Atividade 2"},
+    ],
+    email: 'allytori01@gmail.com',
   };
 
   static navigationOptions = {
@@ -22,21 +24,13 @@ class Atividades extends Component {
       },
   }
 
-  componentDidMount() {
-      api.post('/per_presenca.php', {  
-      email: this.state.email,
-    });
-
-    this.setState({atividades: api.data});
-  }
-
   render() {
     const { navigation } = this.props;
     return(
       <SafeAreaView style={styles.container}>
-        <FlatList data={this.state.data} renderItem={({ item }) => (  
+        <FlatList data={this.state.atividades} renderItem={({  }) => (  
           <View style={styles.item}>
-            <Button onPress={() => navigation.navigate('QRCode')} title={item.title}/>
+            <Button onPress={() => navigation.navigate('QRCode')} title={this.state.atividades.desc}/>
           </View>
           )}
           keyExtractor={item => item.id} />
