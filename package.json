@@ -11,7 +11,7 @@
     "react-devtool": "react-devtools"
   },
   "dependencies": {
-    "@react-native-community/async-storage": "^1.6.2",
+    "@react-native-community/async-storage": "^1.6.3",
     "axios": "^0.19.0",
     "react": "16.9.0",
     "react-native": "0.61.0",
@@ -21,6 +21,7 @@
     "react-native-permissions": "^2.0.5",
     "react-native-picker": "^4.3.7",
     "react-native-qrcode-scanner": "^1.2.3",
+    "react-native-update-gradle": "^1.2.0",
     "react-navigation": "^4.0.9",
     "react-navigation-stack": "^1.9.0",
     "react-redux": "^7.1.1",
