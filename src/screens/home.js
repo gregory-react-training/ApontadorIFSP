@@ -10,8 +10,13 @@ import {
 } from 'react-native';
 import colors from './styles/colors';
 import api from '../services/api';
-import RNFS from 'react-native-fs';
 import '../config/DevToolsConfig';
+
+/**
+ * Caso não consiga executar pelo axios essa requisição, deverá ser sempre atualizada essa URL!
+ */
+const URLEventos =
+  'http://slt.ifsp.edu.br/ifciencia2019/per/webservices/eventos.txt';
 
 export default class Home extends Component {
   state = {
@@ -52,41 +57,48 @@ export default class Home extends Component {
   };
 
   handleSignInPress = async () => {
-    const { navigation } = this.props;
+    const {navigation} = this.props;
     if (this.state.email.length === 0) {
-      this.setState({ erro: 'Preencha o email para continuar!' }, () => false);
-    } 
-    else {
+      this.setState({erro: 'Preencha o email para continuar!'}, () => false);
+    } else {
       try {
-        const response = await api.post('/per_valida_email.php', 
-        { 
-          email: this.state.email 
-        }); 
-          if (response.data != "Usuário Inválido.") {
-            navigation.navigate('Atividades')
-          }
-          else {
-            this.setState({ erro: 'Usuário Inválido.' });
-          }
-      } 
-      catch (err) {
+        const response = await api.post('/per_valida_email.php', {
+          email: this.state.email,
+        });
+        if (response.data != 'Usuário Inválido.') {
+          navigation.navigate('Atividades');
+        } else {
+          this.setState({erro: 'Usuário Inválido.'});
+        }
+      } catch (err) {
         console.log(err);
-        this.setState({ erro: 'Houve um problema com o login, verifique suas credenciais!' });
+        this.setState({
+          erro: 'Houve um problema com o login, verifique suas credenciais!',
+        });
       }
     }
   };
 
+  /**
+   * Pendências:
+   * resolver problema com o encode! -> Não está pegando os caracteres especiais;
+   * executar o get usando o axios no lugar do fetch.
+   */
   carregaEventos = async () => {
-    //Para teste -> Ao invés de escrever o arquivo, pegar do WS
-    RNFS.writeFile(
-      RNFS.DocumentDirectoryPath + '/teste.txt',
-      'evento1;evento2;evento3;',
-      'utf8',
-    );
-    await RNFS.readFile(
-      RNFS.DocumentDirectoryPath + '/teste.txt',
-      'utf8',
-    ).then(data => this.setaEventosState(data));
+    const config = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+        encode: 'utf-8',
+      },
+    };
+    await fetch(URLEventos, config)
+      .then(data => data.text())
+      .then(text => {
+        text = text.replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+        console.log(text);
+        this.setaEventosState(text);
+      });
   };
 
   setaEventosState = data => {

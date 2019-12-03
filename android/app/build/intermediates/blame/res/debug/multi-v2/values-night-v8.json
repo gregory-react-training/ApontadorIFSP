@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Felip\\OneDrive\\Documentos\\React Native\\ApontadorIFSP\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\User\\Desktop\\PROJETOS GIT\\ApontadorIFSP\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Felip\\.gradle\\caches\\transforms-2\\files-2.1\\42bc20e91edad2e0c6c3df19f5adc07d\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-2\\files-2.1\\f71993831c7a68b0994eecb93f127209\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",
