@@ -52,26 +52,26 @@ export default class Home extends Component {
   };
 
   handleSignInPress = async () => {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     if (this.state.email.length === 0) {
-      this.setState({erro: 'Preencha o email para continuar!'}, () => false);
-    } else {
+      this.setState({ erro: 'Preencha o email para continuar!' }, () => false);
+    } 
+    else {
       try {
-        const response = await api.post('/per_valida_email.php', {
-          email: this.state.email,
-        });
-        console.log(response);
-        console.log(response.data);
-        if (response.data != 'Usuário Inválido.') {
-          navigation.navigate('Atividades');
-        } else {
-          this.setState({erro: 'Usuário Inválido.'});
-        }
-      } catch (err) {
+        const response = await api.post('/per_valida_email.php', 
+        { 
+          email: this.state.email 
+        }); 
+          if (response.data != "Usuário Inválido.") {
+            navigation.navigate('Atividades')
+          }
+          else {
+            this.setState({ erro: 'Usuário Inválido.' });
+          }
+      } 
+      catch (err) {
         console.log(err);
-        this.setState({
-          erro: 'Houve um problema com o login, verifique suas credenciais!',
-        });
+        this.setState({ erro: 'Houve um problema com o login, verifique suas credenciais!' });
       }
     }
   };

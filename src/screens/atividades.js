@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Button } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Button, Text } from 'react-native';
 import colors from './styles/colors'
+import api from '../services/api';
 
 class Atividades extends Component {
 
   state = {
-    atividades: [
-      {key: "0", desc: "Atividade 1"},
-      {key: "1", desc: "Atividade 2"},
-    ],
+    atividades: '',
     email: 'allytori01@gmail.com',
   };
 
@@ -24,18 +22,29 @@ class Atividades extends Component {
       },
   }
 
+  componentDidMount = async () => {
+    try {
+      const response = await api.post('/per_presenca.php', 
+      { 
+        email: this.state.email 
+      }); 
+      this.setState({ atividades: response.data });
+    }
+    catch (err) {
+      console.log(err);
+      this.setState({ erro: 'Houve um problema' });
+    }
+  };
+
   render() {
     const { navigation } = this.props;
     return(
-      <SafeAreaView style={styles.container}>
-        <FlatList data={this.state.atividades} renderItem={({  }) => (  
-          <View style={styles.item}>
-            <Button onPress={() => navigation.navigate('QRCode')} title={this.state.atividades.desc}/>
-          </View>
-          )}
-          keyExtractor={item => item.id} />
+      <SafeAreaView style={styles.container}> 
+        <View style={styles.item}>
+          <Button onPress={() => navigation.navigate('QRCode')} title={this.state.atividades}/>
+        </View>
       </SafeAreaView>
-    );
+    );    
   }}
 
 const styles = StyleSheet.create({
@@ -48,9 +57,6 @@ const styles = StyleSheet.create({
     padding: 15,
     marginVertical: 2.5,
     width: "auto",
-  },
-  title: {
-    fontSize: 20,
   },
 });
 
